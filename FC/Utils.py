@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal, DivisionByZero
 from typing import Union
 
 _func = [
@@ -20,4 +20,6 @@ def perform_operation(x: Decimal, y: Decimal, formula_num: int) -> Union[Decimal
         result = _func[formula_num](x, y)
     except KeyError:
         return "Incorrect operation"
+    except DivisionByZero:
+        return "Impossible to divide by 0"
     return result
